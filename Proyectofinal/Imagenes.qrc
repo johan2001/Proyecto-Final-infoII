@@ -1,0 +1,8 @@
+<RCC>
+    <qresource prefix="/">
+        <file>Personaje/Personaje_1.jpg</file>
+        <file>Personaje/Idle (1).png</file>
+        <file>Personaje/Fondo/BG.png</file>
+        <file>Personaje/blade.png</file>
+    </qresource>
+</RCC>
