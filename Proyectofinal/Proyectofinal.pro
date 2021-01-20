@@ -30,6 +30,7 @@ SOURCES += \
     plataformas.cpp \
     poderes.cpp \
     puntaje.cpp \
+    registrarse.cpp \
     vidas.cpp
 
 HEADERS += \
@@ -47,6 +48,7 @@ HEADERS += \
     plataformas.h \
     poderes.h \
     puntaje.h \
+    registrarse.h \
     vidas.h
 
 FORMS += \
@@ -54,7 +56,8 @@ FORMS += \
     iniciodesesion.ui \
     juego.ui \
     menu.ui \
-    multijugador.ui
+    multijugador.ui \
+    registrarse.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

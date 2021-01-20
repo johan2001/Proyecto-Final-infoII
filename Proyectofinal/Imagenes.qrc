@@ -4,5 +4,11 @@
         <file>Personaje/Idle (1).png</file>
         <file>Personaje/Fondo/BG.png</file>
         <file>Personaje/blade.png</file>
+        <file>Personaje/menu/jugar.png</file>
+        <file>Personaje/menu/Multijugador.png</file>
+        <file>Personaje/menu/puuntaje.png</file>
+        <file>Personaje/menu/fondo de pantalla 3.png</file>
+        <file>Personaje/menu/BGTile (3).png</file>
+        <file>Personaje/menu/Fondo_2.jpg</file>
     </qresource>
 </RCC>

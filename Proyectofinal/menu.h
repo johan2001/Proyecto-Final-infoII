@@ -2,7 +2,8 @@
 #define MENU_H
 
 #include <QWidget>
-#include "juego.h"
+
+#include "iniciodesesion.h"
 #include "multijugador.h"
 
 namespace Ui {
@@ -26,6 +27,8 @@ private slots:
 
 private:
     Ui::Menu *ui;
+    Iniciodesesion *iniciodesesion;
+    Multijugador *multijugador;
 };
 
 #endif // MENU_H
