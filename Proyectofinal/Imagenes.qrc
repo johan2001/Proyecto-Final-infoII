@@ -1,7 +1,5 @@
 <RCC>
     <qresource prefix="/">
-        <file>Personaje/Personaje_1.jpg</file>
-        <file>Personaje/Idle (1).png</file>
         <file>Personaje/Fondo/BG.png</file>
         <file>Personaje/blade.png</file>
         <file>Personaje/menu/jugar.png</file>
@@ -10,5 +8,20 @@
         <file>Personaje/menu/fondo de pantalla 3.png</file>
         <file>Personaje/menu/BGTile (3).png</file>
         <file>Personaje/menu/Fondo_2.jpg</file>
+        <file>Personaje/Fondo/01.png</file>
+        <file>Personaje/objetos/Mushroom_2.png</file>
+        <file>Personaje/Pesonaje/Jump Derecha.png</file>
+        <file>Personaje/Pesonaje/Jump Izquierda.png</file>
+        <file>Personaje/Pesonaje/Run Derecha 2.png</file>
+        <file>Personaje/Pesonaje/Run Derecha.png</file>
+        <file>Personaje/Pesonaje/Run Izquierda 2.png</file>
+        <file>Personaje/Pesonaje/Run Izquierda.png</file>
+        <file>Personaje/Pesonaje/Stop Derecha.png</file>
+        <file>Personaje/Pesonaje/Stop Izquierda.png</file>
+        <file>Personaje/objetos/coin.png</file>
+        <file>Personaje/Pesonaje/Enemigo Derecha.png</file>
+        <file>Personaje/Pesonaje/Enemigo Izquierda.png</file>
+        <file>Personaje/objetos/Lama_der.png</file>
+        <file>Personaje/objetos/Llama_Iz.png</file>
     </qresource>
 </RCC>

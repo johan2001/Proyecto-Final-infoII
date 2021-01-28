@@ -7,7 +7,7 @@ Disco::Disco(int x, int y, QObject *parent) : QObject(parent)
     Vel_X=4;
     Alto=40;
     Ancho=40;
-    angulo=300;
+    angulo=1000;
     direction="derecha";
 
     //pinta la imagne del disco

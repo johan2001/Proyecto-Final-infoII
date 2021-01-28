@@ -2,7 +2,7 @@
 
 Jugador::Jugador(int x, int y , QObject *parent): QObject(parent)
 {
-    pixmap=new QPixmap(":/Personaje/Idle (1).png");
+    pixmap=new QPixmap(":/Personaje/Pesonaje/Stop Derecha.png");
     EstadoPosicionBase=true;
     falling=false;
     direction="derecha";
@@ -13,7 +13,7 @@ Jugador::Jugador(int x, int y , QObject *parent): QObject(parent)
     Ancho=45;
     Alto=65;
     velX=20;
-    velY=-40;
+    velY=-50;
     velCaida=0;
 
     // conecta el timepo con el salto y con la caida libre
@@ -52,6 +52,56 @@ bool Jugador::getfalling()
     return falling;
 }
 
+int Jugador::getPos_X()
+{
+    return Pos_X;
+}
+
+int Jugador::getPos_Y()
+{
+    return  Pos_Y;
+}
+
+int Jugador::getAncho()
+{
+    return Ancho;
+}
+
+int Jugador::getAlto()
+{
+    return Alto;
+}
+
+QString Jugador::getDireccion()
+{
+    return direction;
+}
+
+bool Jugador::getEstadoPosBase()
+{
+    return EstadoPosicionBase;
+}
+
+void Jugador::setPosBase(int posbase)
+{
+    Pos_Base=posbase;
+}
+
+void Jugador::set_Y(int y)
+{
+    Pos_Y =y;
+}
+
+void Jugador::set_X(int x)
+{
+    Pos_X=x;
+}
+
+void Jugador::set_Vel_Y(int Vel_y)
+{
+   velY=Vel_y;
+}
+
 void Jugador::Mover_De()
 {
 
@@ -78,6 +128,42 @@ void Jugador::Mover_iz()
 
 }
 
+void Jugador::Animacion_Run_Derecha()
+{
+    if (Aux_Derecha_Run == 1) {
+        pixmap=new QPixmap(":/Personaje/Pesonaje/Run Derecha.png");
+    }
+    else if (Aux_Derecha_Run == 2) {
+        pixmap=new QPixmap(":/Personaje/Pesonaje/Stop Derecha.png");
+    }
+    else if (Aux_Derecha_Run == 3) {
+        pixmap=new QPixmap(":/Personaje/Pesonaje/Run Derecha 2.png");
+    }
+    if(Aux_Derecha_Run == 3){
+        Aux_Derecha_Run=0;
+    }
+    Aux_Derecha_Run ++;
+}
+
+void Jugador::Animacion_Run_Izquierda()
+{
+    if (Aux_Izquierda_Run == 1) {
+        pixmap=new QPixmap(":/Personaje/Pesonaje/Run Izquierda.png");
+    }
+    else if (Aux_Izquierda_Run == 2) {
+        pixmap=new QPixmap(":/Personaje/Pesonaje/Stop Izquierda.png");
+    }
+    else if (Aux_Izquierda_Run == 3) {
+        pixmap=new QPixmap(":/Personaje/Pesonaje/Run Izquierda 2.png");
+    }
+    if(Aux_Izquierda_Run == 3){
+        Aux_Izquierda_Run=0;
+    }
+    Aux_Izquierda_Run ++;
+}
+
+
+
 void Jugador::fricion()
 {
 
@@ -85,10 +171,10 @@ void Jugador::fricion()
         timerfricion->stop();
     }
     if (direction == "izquierda"){
-        Pos_X-=2;
+        Pos_X-=1;
     }
     if (direction == "derecha"){
-        Pos_X+=2;
+        Pos_X+=1;
     }
 
     setX(Pos_X);
@@ -98,6 +184,12 @@ void Jugador::fricion()
 
 void Jugador::salto()
 {
+    if(direction=="derecha"){
+        pixmap=new QPixmap(":/Personaje/Pesonaje/Jump Derecha.png");
+    }
+    else {
+        pixmap=new QPixmap(":/Personaje/Pesonaje/Jump Izquierda.png");
+    }
     timerSalto->start(18);
     EstadoPosicionBase=false;
 
@@ -106,19 +198,11 @@ void Jugador::salto()
     }
     if(velY<0) {
         falling=false;
-        Pos_Base=500;
+        Pos_Base=523;
     }
-    if (direction == "izquierda"){
-        Pos_X-=1;
-    }
-    if (direction == "derecha"){
-        Pos_X+=1;
-    }
-
     velY+=G*Dt;
     Pos_Y += velY*Dt;
     setY(Pos_Y);
-    setX(Pos_X);
 
     if(Pos_Y>=Pos_Base){ // donde queda despues del salto
 

@@ -17,6 +17,8 @@ private:
     int velX;
     int velCaida;
     QString direction;
+    short int Aux_Derecha_Run = 1;
+    short int Aux_Izquierda_Run = 1;
 
     //variables secundarias
     bool EstadoPosicionBase;
@@ -39,11 +41,22 @@ public:
 
     //metodes get:obtener
     bool getfalling();
+    int getPos_X ();
+    int getPos_Y ();
+    int getAncho ();
+    int getAlto ();
+    QString getDireccion ();
+    bool getEstadoPosBase();
     //metodos set:modificar
-
+    void setPosBase(int);
+    void set_Y(int);
+    void set_X(int);
+    void set_Vel_Y(int);
     //metodos de movimientos
     void Mover_De();
     void Mover_iz();
+    void Animacion_Run_Derecha();
+    void Animacion_Run_Izquierda();
 
 signals:
 
