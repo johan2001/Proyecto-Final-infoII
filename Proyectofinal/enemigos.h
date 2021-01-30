@@ -16,12 +16,22 @@ private:
     //variables secundarias
     QTimer *TimerMover;
     QPixmap *pixmap;
-    clock_t tiempo;
 public:
     explicit Enemigos(int x, int y, QString direcion, QObject *parent = nullptr);
     // pinta el objeto
     QRectF boundingRect() const;
     void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget);
+
+    //Metodos set modificar
+    void set_Direcion(QString);
+    void set_Pos_X(int);
+    void set_Pos_Y(int);
+
+    //Metodos get Obtener
+    QString get_Direccion();
+    int get_Pos_X();
+    int get_Pos_Y();
+
 signals:
 
 public slots:

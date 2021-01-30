@@ -52,11 +52,14 @@ public:
     void set_Y(int);
     void set_X(int);
     void set_Vel_Y(int);
+    void set_Y_Ini(int);
+    void set_X_Ini(int);
     //metodos de movimientos
     void Mover_De();
     void Mover_iz();
     void Animacion_Run_Derecha();
     void Animacion_Run_Izquierda();
+    void Retur_Pos_inicial ();
 
 signals:
 

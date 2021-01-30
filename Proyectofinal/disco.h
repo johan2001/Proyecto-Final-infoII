@@ -12,24 +12,29 @@ private:
     int Vel_X;
     int Alto, Ancho;
     int angulo;
+    QString Clase;
     QString direction;
     QPixmap *pixmap;
     QTimer *timermove;
+    QTimer *timermoveX;
 public:
-    explicit Disco(int x, int y, QObject *parent = nullptr);
+    explicit Disco(int x, int y, QString clase,QObject *parent = nullptr);
 
     //pinto la imaagen
     QRectF boundingRect() const;
     void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget);
 
-    //metodos set
+    //metodos get
     int getVelX();
     int getWidth();
+    int get_Pos_X();
     QString getDirection();
 
-    //metodos get
-    void setVelX(int vel);
-    void setDirection(QString direc);
+
+    //metodos set
+    void setVelX(int );
+    void set_Pos_X(int);
+    void setDirection(QString);
 
 
 signals:
@@ -38,6 +43,7 @@ public slots:
 
     //funciones para rotarlo y moverlo
     void moveRotation();
+    void mover_X();
 };
 
 

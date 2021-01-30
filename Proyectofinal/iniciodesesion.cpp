@@ -34,10 +34,16 @@ void Iniciodesesion::on_pushButton_clicked()// abre un archivo y revisa el los u
         for (int i=0; i < Linea.size();i++) {
             if(Linea[i] == ' ' or Linea[i] == '\n'){
                 if(espacios ==0){
-                    if(usuario == Palbra){cont++;des=true;}
+                    if(usuario == Palbra){
+                        cont++;
+                        des=true;
+                    }
                 }
                 else if (espacios==1) {
-                    if(contrasea == Palbra){cont++;des =false;}
+                    if(contrasea == Palbra){
+                        cont++;
+                        des =false;
+                    }
                 }
                 if(cont == 2 and aux==0 ){
                     if (espacios==2) {
@@ -53,12 +59,6 @@ void Iniciodesesion::on_pushButton_clicked()// abre un archivo y revisa el los u
                         PosYP =Palbra.toInt();
                     }
                     else if(espacios ==6){
-                        vidas =Palbra.toInt();
-                    }
-                    else if(espacios ==7){
-                        score = Palbra.toInt();
-                    }
-                    else if(espacios ==8){
                         score_maxi = Palbra.toInt();
                         aux=1;
                     }
@@ -75,7 +75,7 @@ void Iniciodesesion::on_pushButton_clicked()// abre un archivo y revisa el los u
         espacios = 0;
     }
     if(cont ==2){
-        juego = new Juego();
+        juego = new Juego(PosXJ,PosYJ,PosXP,PosXP,score_maxi);
         juego->show();
         hide();
     }

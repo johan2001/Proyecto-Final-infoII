@@ -48,7 +48,7 @@ void Registrarse::on_pushButton_clicked()// cuando presionas el boton abre guard
     }
     if(cont ==0){
         QTextStream out(&archivo);
-        out << usuario + ' ' + contrasea + ' ' + "75"+' '+"553"+' '+'0'+' '+'0'+' '+'5'+' '+'0'+' '+'0' + '\n';
+        out << usuario + ' ' + contrasea + ' ' + "45"+' '+"14"+' '+'0'+' '+'0'+' '+'0' + '\n';
         QMessageBox::warning(this,"Iniciar sesion","Usuario creado");
     }
     else if (cont ==1){

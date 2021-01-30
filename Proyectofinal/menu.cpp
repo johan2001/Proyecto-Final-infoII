@@ -35,7 +35,6 @@ void Menu::on_pushButton_2_clicked()//al cliclear un boto muestra el modo multij
 void Menu::on_pushButton_3_clicked() // al clikear el boto abre un achivo y estrae el nombre y el puntaje del jugador
 {
     int espacios =0;
-    int cont =0;
     QString Informacion = "";
     QFile archivo("hola.txt");
     QString Linea;
@@ -67,7 +66,6 @@ void Menu::on_pushButton_3_clicked() // al clikear el boto abre un achivo y estr
             }
         }
         espacios = 0;
-        cont = 0;
     }
     QMessageBox::about(this, "Bloc de notas",Informacion);
     archivo.flush();

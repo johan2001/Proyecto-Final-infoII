@@ -1,10 +1,12 @@
 #include "bullet.h"
 
-Bullet::Bullet (int x, int y, QString direc, QObject *parent) : QObject(parent)
+Bullet::Bullet (int x, int y, QString direc,QString balas ,QObject *parent) : QObject(parent)
 {
+
     Pos_X=x;
     Pos_Y=y;
     direction=direc;
+    Balas =balas;
     Ancho=20;
     Alto=10;
     //pinta una imagen dpendiendo de la derecion
@@ -41,6 +43,11 @@ QString Bullet::getdirection()
 int Bullet::getposx()
 {
     return Pos_X;
+}
+
+QString Bullet::get_Balas()
+{
+    return Balas;
 }
 void Bullet::move() //mueve la bala dependiento de la direcion
 

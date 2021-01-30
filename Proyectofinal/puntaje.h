@@ -12,6 +12,7 @@ public:
     void Aumentarpuntaje(int valor);
     int getpintaje();
 
+
 };
 
 #endif // PUNTAJE_H

@@ -25,3 +25,14 @@ Vidas::~Vidas()
 {
 
 }
+
+void Vidas::set_Pos_X(int x)
+{
+    posx = x;
+    setX(posx);
+}
+
+int Vidas::get_Pos_X()
+{
+    return posx;
+}

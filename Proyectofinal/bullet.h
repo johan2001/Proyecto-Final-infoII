@@ -13,9 +13,10 @@ private:
     int Ancho, Alto;
     QTimer *timer_bullet;
     QString direction;
+    QString Balas;
 
 public:
-    Bullet(int x, int y,QString, QObject *parent = nullptr);
+    Bullet(int x, int y,QString, QString, QObject *parent = nullptr);
     //pintar la imagen
     QRectF boundingRect() const;
     void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget);
@@ -23,6 +24,7 @@ public:
     //metodos Get
     QString getdirection();
     int getposx();
+    QString get_Balas();
 
 signals:
 

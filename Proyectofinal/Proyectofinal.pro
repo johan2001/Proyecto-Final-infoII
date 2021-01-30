@@ -17,6 +17,7 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
     bullet.cpp \
+    cuerda.cpp \
     disco.cpp \
     enemigos.cpp \
     findeljuego.cpp \
@@ -27,7 +28,6 @@ SOURCES += \
     juego.cpp \
     menu.cpp \
     multijugador.cpp \
-    obstacuos.cpp \
     plataformas.cpp \
     poderes.cpp \
     puntaje.cpp \
@@ -36,6 +36,7 @@ SOURCES += \
 
 HEADERS += \
     bullet.h \
+    cuerda.h \
     disco.h \
     enemigos.h \
     findeljuego.h \
@@ -46,7 +47,6 @@ HEADERS += \
     librerias.h \
     menu.h \
     multijugador.h \
-    obstacuos.h \
     plataformas.h \
     poderes.h \
     puntaje.h \

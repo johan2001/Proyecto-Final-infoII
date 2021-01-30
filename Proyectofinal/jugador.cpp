@@ -90,16 +90,28 @@ void Jugador::setPosBase(int posbase)
 void Jugador::set_Y(int y)
 {
     Pos_Y =y;
+    setY(Pos_Y);
 }
 
 void Jugador::set_X(int x)
 {
     Pos_X=x;
+    setX(Pos_X);
 }
 
 void Jugador::set_Vel_Y(int Vel_y)
 {
-   velY=Vel_y;
+    velY=Vel_y;
+}
+
+void Jugador::set_Y_Ini(int y)
+{
+    Pos_Y_Base = y;
+}
+
+void Jugador::set_X_Ini(int x)
+{
+    Pos_X_Base = x;
 }
 
 void Jugador::Mover_De()
@@ -107,7 +119,7 @@ void Jugador::Mover_De()
 
     if(Mov_De){
         direction="derecha";
-        Pos_X+=5;
+        Pos_X+=8;
         setX(Pos_X);
         tiempo=clock();
         timerfricion->start(10);
@@ -120,7 +132,7 @@ void Jugador::Mover_iz()
 {
     if(Mov_Iz){
         direction="izquierda";
-        Pos_X-=5;
+        Pos_X-=8;
         setX(Pos_X);
         tiempo=clock();
         timerfricion->start(10);
@@ -160,6 +172,13 @@ void Jugador::Animacion_Run_Izquierda()
         Aux_Izquierda_Run=0;
     }
     Aux_Izquierda_Run ++;
+}
+
+void Jugador::Retur_Pos_inicial()
+{
+    Pos_X =Pos_X_Base;
+    Pos_Y =Pos_Y_Base;
+    setPos(Pos_X,Pos_Y);
 }
 
 

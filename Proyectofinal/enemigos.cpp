@@ -8,7 +8,6 @@ Enemigos::Enemigos(int x, int y,QString direcion, QObject *parent): QObject(pare
     Direction = direcion;
     Ancho= 45;
     Alto= 65;
-    tiempo = clock();
     if(Direction=="Derecha"){
         pixmap=new QPixmap(":/Personaje/Pesonaje/Enemigo Derecha.png");
     }
@@ -37,8 +36,48 @@ void Enemigos::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, 
     UNUSED(widget);
 }
 
+void Enemigos::set_Direcion(QString direcion)
+{
+    Direction=direcion;
+
+    if(Direction=="Izquierda"){
+        pixmap=new QPixmap(":/Personaje/Pesonaje/Enemigo Izquierda.png");
+    }
+    if(Direction=="Derecha"){
+        pixmap=new QPixmap(":/Personaje/Pesonaje/Enemigo Derecha.png");
+    }
+}
+
+void Enemigos::set_Pos_X(int x)
+{
+    Pos_X = x;
+    setX(Pos_X);
+}
+
+void Enemigos::set_Pos_Y(int y)
+{
+    Pos_Y = y;
+    setY(Pos_Y);
+}
+
+QString Enemigos::get_Direccion()
+{
+    return Direction;
+}
+
+int Enemigos::get_Pos_X()
+{
+    return Pos_X;
+}
+
+int Enemigos::get_Pos_Y()
+{
+    return Pos_Y;
+}
+
 void Enemigos::Mover()
 {
+
     if(Direction=="Derecha"){
         Pos_X += 5;
         setX(Pos_X);
@@ -47,16 +86,5 @@ void Enemigos::Mover()
         Pos_X -= 5;
         setX(Pos_X);
     }
-    if (int (clock() - tiempo) >= 5000){
-        if(Direction=="Derecha"){
-            Direction ="Izquierda";
-            tiempo = clock();
-            pixmap=new QPixmap(":/Personaje/Pesonaje/Enemigo Izquierda.png");
-        }
-        else {
-            Direction ="Derecha" ;
-            tiempo = clock();
-            pixmap=new QPixmap(":/Personaje/Pesonaje/Enemigo Derecha.png");
-        }
-    }
+
 }

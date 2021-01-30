@@ -20,6 +20,7 @@ public:
     void Actualizar_Pos_Per(Jugador *personaje);
     //get obtener
     QString getClase ();
+    int get_Pos_X();
 };
 
 #endif // PLATAFORMAS_H

@@ -26,7 +26,17 @@ Plataformas::Plataformas(int x, int y, QString clase, QObject *parent): QObject(
         Alto = 30;
         Ancho = 30;
     }
-
+    else if (Clase == "Door") {
+        pixmap = new QPixmap(":/Personaje/objetos/door.png");
+        Alto =80;
+        Ancho =40;
+    }
+    else if (Clase == "Rebote"){
+         pixmap = new QPixmap("");
+    }
+    else if (Clase == "Pinchos") {
+        pixmap = new QPixmap(":/Personaje/objetos/thorns1.png");
+    }
     setPos(Pos_X,Pos_Y);
 }
 
@@ -83,4 +93,9 @@ void Plataformas::Actualizar_Pos_Per(Jugador *personaje)
 QString Plataformas::getClase()
 {
     return Clase;
+}
+
+int Plataformas::get_Pos_X()
+{
+    return Pos_X;
 }

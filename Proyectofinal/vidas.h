@@ -17,6 +17,8 @@ public:
     QRectF boundingRect() const;
     void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget);
     ~ Vidas() ;
+    void set_Pos_X(int);
+    int get_Pos_X();
 };
 
 #endif // VIDAS_H
