@@ -3,9 +3,9 @@
 Jefe_final::Jefe_final(int x, int y,QString direcion ) : Enemigos( x,  y,direcion )
 {
 
-    Ancho= 45;
-    Alto= 65;
-    pixmap=new QPixmap(":/Personaje/Pesonaje/Enemigo Derecha.png");
+    Ancho= 100;
+    Alto= 120;
+    pixmap=new QPixmap(":/Personaje/Pesonaje/Jefe Final.png");
     TimerMover=new QTimer;
     connect(TimerMover,SIGNAL(timeout()),this,SLOT(Mover_Jefe()));
     TimerMover->start(50);

@@ -29,10 +29,10 @@ SOURCES += \
     menu.cpp \
     multijugador.cpp \
     plataformas.cpp \
-    poderes.cpp \
     puntaje.cpp \
     registrarse.cpp \
-    vidas.cpp
+    vidas.cpp \
+    winer.cpp
 
 HEADERS += \
     bullet.h \
@@ -48,10 +48,10 @@ HEADERS += \
     menu.h \
     multijugador.h \
     plataformas.h \
-    poderes.h \
     puntaje.h \
     registrarse.h \
-    vidas.h
+    vidas.h \
+    winer.h
 
 FORMS += \
     findeljuego.ui \
@@ -59,7 +59,8 @@ FORMS += \
     juego.ui \
     menu.ui \
     multijugador.ui \
-    registrarse.ui
+    registrarse.ui \
+    winer.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

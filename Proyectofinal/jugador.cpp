@@ -140,6 +140,33 @@ void Jugador::Mover_iz()
 
 }
 
+void Jugador::Animacion_Run_Derecha2()
+{
+    if (Aux_Derecha_Run == 1) {
+        pixmap=new QPixmap(":/Personaje/Pesonaje/Run__002.png");
+    }
+    else if (Aux_Derecha_Run == 2) {
+        pixmap=new QPixmap(":/Personaje/Pesonaje/Run__008.png");
+    }
+    if(Aux_Derecha_Run == 2){
+        Aux_Derecha_Run=0;
+    }
+    Aux_Derecha_Run ++;
+}
+
+void Jugador::Animacion_Run_Izquierda2()
+{
+    if (Aux_Izquierda_Run == 1) {
+        pixmap=new QPixmap(":/Personaje/Pesonaje/Run__003-ConvertImage.png");
+    }
+    else if (Aux_Izquierda_Run == 2) {
+        pixmap=new QPixmap(":/Personaje/Pesonaje/Run__008-ConvertImage.png");
+    }
+    if(Aux_Izquierda_Run == 2){
+        Aux_Izquierda_Run=0;
+    }
+}
+
 void Jugador::Animacion_Run_Derecha()
 {
     if (Aux_Derecha_Run == 1) {
@@ -174,6 +201,26 @@ void Jugador::Animacion_Run_Izquierda()
     Aux_Izquierda_Run ++;
 }
 
+void Jugador::AnimaSaltar()
+{
+    if(direction=="derecha"){
+        pixmap=new QPixmap(":/Personaje/Pesonaje/Jump Derecha.png");
+    }
+    else {
+        pixmap=new QPixmap(":/Personaje/Pesonaje/Jump Izquierda.png");
+    }
+}
+
+void Jugador::AnimaSaltar2()
+{
+    if(direction=="derecha"){
+        pixmap=new QPixmap(":/Personaje/Pesonaje/Jump__005.png");
+    }
+    else {
+        pixmap=new QPixmap(":/Personaje/Pesonaje/Jump__004-ConvertImage.png");
+    }
+}
+
 void Jugador::Retur_Pos_inicial()
 {
     Pos_X =Pos_X_Base;
@@ -203,12 +250,7 @@ void Jugador::fricion()
 
 void Jugador::salto()
 {
-    if(direction=="derecha"){
-        pixmap=new QPixmap(":/Personaje/Pesonaje/Jump Derecha.png");
-    }
-    else {
-        pixmap=new QPixmap(":/Personaje/Pesonaje/Jump Izquierda.png");
-    }
+
     timerSalto->start(18);
     EstadoPosicionBase=false;
 

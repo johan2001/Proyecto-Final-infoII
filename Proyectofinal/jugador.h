@@ -57,8 +57,12 @@ public:
     //metodos de movimientos
     void Mover_De();
     void Mover_iz();
+    void Animacion_Run_Derecha2();
+    void Animacion_Run_Izquierda2();
     void Animacion_Run_Derecha();
     void Animacion_Run_Izquierda();
+    void AnimaSaltar();
+    void AnimaSaltar2();
     void Retur_Pos_inicial ();
 
 signals:

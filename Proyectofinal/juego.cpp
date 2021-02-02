@@ -1,7 +1,7 @@
 #include "juego.h"
 #include "ui_juego.h"
 
-Juego::Juego(int pos_xj, int pos_yj,int pos_xp,int pos_yp,int puntaje_maximo, QWidget *parent) :
+Juego::Juego(int pos_xj, int pos_yj,int pos_xp,int pos_yp,int puntaje_maximo,QString usu, QString contra, QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::Juego)
 {
@@ -11,7 +11,11 @@ Juego::Juego(int pos_xj, int pos_yj,int pos_xp,int pos_yp,int puntaje_maximo, QW
     Pos_YJ = pos_yj;
     Pos_XP = pos_xp;
     Pos_YP = pos_yp;
+    usuario = usu;
+    contrasea =contra;
     Puntaje_Maximo = puntaje_maximo;
+    winer= new Winer;
+    findeljuego= new Findeljuego;
     tiempo = clock();
 
     //se incia el tiempo
@@ -147,6 +151,9 @@ void Juego::timerEvent(QTimerEvent *)
         }
     }
 
+    if(keys[Qt::Key_G]){
+        escribir(Pos_XJ,Pos_YJ,Pos_XP,Pos_YP,puntaje->getpintaje(),Puntaje_Maximo,ListdeVidas.size());
+    }
     if(keys[Qt::Key_A]){
         jugador->Mover_iz();
         jugador->Animacion_Run_Izquierda();
@@ -158,6 +165,7 @@ void Juego::timerEvent(QTimerEvent *)
     }
     if(keys[Qt::Key_Space]){
          jugador->salto();
+         jugador->AnimaSaltar();
 
     }
 }
@@ -213,7 +221,15 @@ void Juego::colisiones()
         }
         //colision de los pinchos con el jugador
         if (listPlataformas.at(i)->collidesWithItem(jugador) && listPlataformas.at(i)->getClase()== "Pinchos"){
-
+            if(ListdeVidas.size()==0){
+                findeljuego->show();
+                hide();
+            }
+            else {
+                jugador->Retur_Pos_inicial();
+                scene->removeItem(ListdeVidas.at(0));
+                ListdeVidas.removeAt(0);
+            }
         }
         //colisiones para que rebote el disco
         for (int j=0;j<listDisco.size();j++) {
@@ -233,8 +249,9 @@ void Juego::colisiones()
    for(int i=0;i<listEnemigos.size();i++){
        for (int j=0;j<listBullet.size();j++) {
            if (listBullet.at(j)->collidesWithItem(listEnemigos.at(i))){
-                listEnemigos.at(i)->setPos(-100,-100);
+
                 scene->removeItem(listEnemigos.at(i));
+                listEnemigos.at(i)->setPos(-100,-100);
                 scene->removeItem(listBullet.at(j));
                 listBullet.removeAt(j);
                 puntaje->Aumentarpuntaje(25);
@@ -242,34 +259,53 @@ void Juego::colisiones()
 
        }
        if (jugador->collidesWithItem(listEnemigos.at(i))){
-           jugador->Retur_Pos_inicial();
-           scene->removeItem(ListdeVidas.at(0));
-           ListdeVidas.removeAt(0);
+           if(ListdeVidas.size()==0){
+               findeljuego->show();
+               hide();
+           }
+           else {
+               jugador->Retur_Pos_inicial();
+               scene->removeItem(ListdeVidas.at(0));
+               ListdeVidas.removeAt(0);
+           }
 
        }
    }
    //Coliones de las cierra
    for (int i =0;i<listDisco.size();i++) {
        if (listDisco.at(i)->collidesWithItem(jugador)){
-           jugador->Retur_Pos_inicial();
-           scene->removeItem(ListdeVidas.at(0));
-           ListdeVidas.removeAt(0);
+           if(ListdeVidas.size()==0){
+               findeljuego->show();
+               hide();
+           }
+           else {
+               jugador->Retur_Pos_inicial();
+               scene->removeItem(ListdeVidas.at(0));
+               ListdeVidas.removeAt(0);
+           }
        }
    }
    //colision cuerda
    for (int i=0;i<ListCuerda.size();i++) {
        if(ListCuerda.at(i)->collidesWithItem(jugador)){
-           jugador->Retur_Pos_inicial();
-           scene->removeItem(ListdeVidas.at(0));
-           ListdeVidas.removeAt(0);
+           if(ListdeVidas.size()==0){
+               findeljuego->show();
+               hide();
+           }
+           else {
+               jugador->Retur_Pos_inicial();
+               scene->removeItem(ListdeVidas.at(0));
+               ListdeVidas.removeAt(0);
+           }
        }
    }
    //colisiones para el jefe final
    for (int j=0;j<ListJefe_final.size();j++) {
-       if (int (clock() - tiempo) >= 1500){
+       if (int (clock() - tiempo) >= 800){
            listBullet.push_back(new Bullet(ListJefe_final.at(j)->get_Pos_X(),ListJefe_final.at(j)->get_Pos_Y()+ListJefe_final.at(j)->get_Alto()/2,"izquierda","Jefe"));
            scene->addItem(listBullet.last());
            tiempo = clock();
+
        }
        for (int i = 0;i<listPlataformas.size();i++) {
            if (listPlataformas.at(i)->collidesWithItem(ListJefe_final.at(j)) && listPlataformas.at(i)->getClase()=="Rebote"){
@@ -286,17 +322,119 @@ void Juego::colisiones()
        }
        for (int b=0;b<listBullet.size();b++) {
            if (listBullet.at(b)->collidesWithItem(jugador) && listBullet.at(b)->getdirection() =="izquierda" && listBullet.at(b)->get_Balas()=="Jefe"){
-                jugador->Retur_Pos_inicial();
-                scene->removeItem(ListdeVidas.at(0));
-                ListdeVidas.removeAt(0);
+               if(ListdeVidas.size()==0){
+                   findeljuego->show();
+                   hide();
+               }
+               else {
+                   jugador->Retur_Pos_inicial();
+                   scene->removeItem(ListdeVidas.at(0));
+                   ListdeVidas.removeAt(0);
+               }
+
            }
            if(listBullet.at(b)->collidesWithItem(ListJefe_final.at(j)) && listBullet.at(b)->getdirection()=="derecha"){
-
+               jefe_vida --;
+               if (jefe_vida ==0){
+                    escribir(45,14,0,0,puntaje->getpintaje(),Puntaje_Maximo,5);
+                    winer->show();
+                    hide();
+                }
            }
        }
    }
+}
 
+void Juego::escribir(int _posx,int _posy,int _pos_pantallaX, int pos_PantallaY, int _puntaje,int _punatej_maximo,int _vidas){
+    short int espacios =0;
+    short int cont =0;
+    QString Informacion = "",Linea ="", Palabra="";
 
+    QFile archivo("hola.txt");
+    if(!archivo.open(QFile::ReadOnly | QFile::Text)){
+        return;
+    }
+    while (! archivo.atEnd() ) {
+        Linea = archivo.readLine();
+        for (int i=0; i < Linea.size();i++) {
+            if(Linea[i] == ' ' or Linea[i] == '\n'){
+                if(espacios ==0){
+                    espacios +=1;
+                    Informacion += Palabra + ' ';
+                    if(usuario == Palabra){
+                        cont +=1;
+                    }
+                }
+                else if (espacios==1) {
+                    espacios +=1;
+                    Informacion += Palabra +' ';
+                    if(contrasea ==Palabra){
+                        cont+=1;
+                    }
+                }
+                else if(espacios ==2 and cont ==2) {
+                    espacios +=1;
+                    Informacion += QString::number(_posx) + ' ';
+                }
+                else if(espacios ==3 and cont ==2) {
+                    espacios +=1;
+                    Informacion += QString::number(_posy)+' ';
+                }
+
+                else if(espacios ==4 and cont ==2) {
+                    espacios +=1;
+                    Informacion += QString::number(_pos_pantallaX)+' ';
+                }
+                else if(espacios ==5 and cont ==2) {
+                    espacios +=1;
+                    Informacion += QString::number(pos_PantallaY)+' ';
+                }
+                else if(espacios ==6 and cont ==2) {
+                    espacios +=1;
+                    Informacion += QString::number(_vidas)+' ';
+                }
+                else if(espacios ==7 and cont ==2) {
+                    espacios +=1;
+                    Informacion += QString::number(_puntaje)+' ';
+                }
+                else if(espacios ==8 and cont ==2) {
+                    espacios +=1;
+                    Informacion += QString::number(_punatej_maximo)+'\n';
+
+                }
+                else {
+                    if(espacios==8 and cont !=2){
+                        Informacion += Palabra + '\n';
+                        espacios +=1;
+                    }
+                    else {
+                        Informacion += Palabra + ' ';
+                        espacios +=1;
+                    }
+
+                }
+                Palabra = "";
+
+            }
+            else {
+                Palabra += Linea[i];
+
+            }
+        }
+        espacios = 0;
+        cont = 0;
+    }
+
+    archivo.flush();
+    archivo.close();
+    if(!archivo.open(QFile::WriteOnly | QFile::Text)){
+        return;
+    }
+    QTextStream out(&archivo);
+    out << Informacion;
+    archivo.flush();
+    archivo.close();
+    Informacion ="";
 }
 
 

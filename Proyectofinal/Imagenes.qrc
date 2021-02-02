@@ -26,5 +26,14 @@
         <file>Personaje/objetos/thorns1.png</file>
         <file>Personaje/objetos/blade.png</file>
         <file>Personaje/objetos/cierra.png</file>
+        <file>Personaje/Fondo/gamerover.jpg</file>
+        <file>Personaje/Pesonaje/Jump__004-ConvertImage.png</file>
+        <file>Personaje/Pesonaje/Jump__005.png</file>
+        <file>Personaje/Fondo/Win.jpg</file>
+        <file>Personaje/Pesonaje/Run__002.png</file>
+        <file>Personaje/Pesonaje/Run__003-ConvertImage.png</file>
+        <file>Personaje/Pesonaje/Run__008.png</file>
+        <file>Personaje/Pesonaje/Run__008-ConvertImage.png</file>
+        <file>Personaje/Pesonaje/Jefe Final.png</file>
     </qresource>
 </RCC>

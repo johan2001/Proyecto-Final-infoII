@@ -75,7 +75,7 @@ void Iniciodesesion::on_pushButton_clicked()// abre un archivo y revisa el los u
         espacios = 0;
     }
     if(cont ==2){
-        juego = new Juego(PosXJ,PosYJ,PosXP,PosXP,score_maxi);
+        juego = new Juego(PosXJ,PosYJ,PosXP,PosXP,score_maxi,usuario,contrasea);
         juego->show();
         hide();
     }
